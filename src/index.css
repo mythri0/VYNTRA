@@ -1,0 +1,504 @@
+@import "tailwindcss";
+
+:root {
+  --color-navy: #0F172A;
+  --color-navy-dark: #070D18;
+  --color-royal-blue: #2563EB;
+  --color-royal-blue-hover: #1D4ED8;
+  --color-indigo: #4F46E5;
+  --color-violet: #7C3AED;
+  --color-light-bg: #FFFFFF;
+  --color-slate-bg: #F8FAFC;
+  --color-subtle-grey: #F1F5F9;
+  --color-muted: #64748B;
+  --color-border: #E2E8F0;
+  --color-border-subtle: #EDF2F7;
+  --color-card-border: #E2E8F0;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+
+  /* Standard unified enterprise font */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 400;
+  color-scheme: light;
+  color: #0F172A;
+  background-color: #FAFCFF;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #FAFCFF;
+  color: #0F172A;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65;
+}
+
+/* ==========================================================================
+   ENTERPRISE LAYOUT SYSTEM: CONTAINERS & SECTION WRAPPERS
+   ========================================================================== */
+
+/* Standard Responsive Page Container (1200-1320px max, proper responsive margins) */
+.vyntra-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;  /* 20px on mobile */
+  padding-right: 1.25rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+  .vyntra-container {
+    padding-left: 1.75rem; /* 28px on tablet */
+    padding-right: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .vyntra-container {
+    padding-left: 2.5rem;  /* 40px on desktop */
+    padding-right: 2.5rem;
+  }
+}
+
+/* Flex and Grid containment guards to prevent child blowout */
+.min-w-0 {
+  min-width: 0;
+}
+
+.wrap-break-words {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+/* Reusable distinct enterprise panel styling */
+.vyntra-panel-distinct {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .vyntra-panel-distinct {
+    padding: 2rem;
+  }
+}
+
+/* Standalone Page Section with Generous Vertical Rhythm */
+.vyntra-section {
+  padding-top: 4.5rem;   /* 72px on mobile/tablet */
+  padding-bottom: 4.5rem;
+}
+
+@media (min-width: 1024px) {
+  .vyntra-section {
+    padding-top: 5.5rem;  /* 88px on desktop */
+    padding-bottom: 5.5rem;
+  }
+}
+
+.vyntra-section-alt {
+  background-color: #F8FAFC;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+/* Consistent Section Header Block */
+.section-header {
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-header {
+    margin-bottom: 3.25rem;
+  }
+}
+
+.section-label {
+  display: inline-block;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2563EB;
+  margin-bottom: 0.75rem; /* 12px */
+}
+
+.section-heading-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0F172A;
+  line-height: 1.2;
+}
+
+.section-lead {
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.65;
+  color: #475569;
+  max-width: 44rem;
+  margin-top: 0.875rem; /* ~14px */
+}
+
+/* Badge label used across page headers */
+.badge-tech {
+  display: inline-block;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2563EB;
+  background: #EFF6FF;
+  padding: 0.35rem 0.875rem;
+  border-radius: 9999px;
+  border: 1px solid #BFDBFE;
+}
+
+/* Headings typography */
+h1, h2, h3, h4, h5, h6 {
+  color: #0F172A;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.font-serif-headline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: #0F172A;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Spacious, breathable enterprise card */
+.vyntra-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 8px 24px -4px rgba(15, 23, 42, 0.04);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 1.5rem; /* 24px default internal padding */
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .vyntra-card {
+    padding: 1.75rem; /* ~28px on desktop */
+  }
+}
+
+.vyntra-card:hover {
+  border-color: #CBD5E1;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06), 0 16px 32px -6px rgba(15, 23, 42, 0.08);
+}
+
+/* ==========================================================================
+   STANDARDIZED CARD TYPOGRAPHY & ALIGNMENT HIERARCHY
+   ========================================================================== */
+
+/* 1. Category label: 12-13px, medium or semibold */
+.card-category-label {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1rem; /* 16px */
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* 2. KPI count label: 13-14px */
+.card-kpi-count {
+  font-size: 0.8125rem; /* 13px */
+  line-height: 1.125rem;
+  font-weight: 500;
+}
+
+/* 3. Card heading: 19-21px, semibold */
+.card-title-heading {
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.25;
+  font-weight: 600;
+  color: #0F172A;
+  letter-spacing: -0.015em;
+}
+
+/* 4. Card description: 14-15px, regular, line-height 1.5 */
+.card-desc-text {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.5;
+  font-weight: 400;
+  color: #475569;
+}
+
+/* 5. Primary KPI label: 12-13px, semibold */
+.card-kpi-label {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* 6. Primary KPI description: 13-14px, medium, line-height 1.45 */
+.card-kpi-desc {
+  font-size: 0.84375rem; /* 13.5px */
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+/* Standardized Outcome Card Structure */
+.outcome-card-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 16px;
+  padding: 1.5rem; /* 24px padding on desktop */
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  min-width: 0;
+  box-sizing: border-box;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+}
+
+.outcome-card-item:hover {
+  border-color: #93C5FD;
+  box-shadow: 0 4px 16px -2px rgba(37, 99, 235, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+}
+
+.outcome-card-item:focus-visible {
+  outline: 2px solid #2563EB;
+  outline-offset: 2px;
+}
+
+/* Selected state: Royal blue / indigo with high contrast text and exact dimensional preservation */
+.outcome-card-item.is-selected {
+  background-color: #1E40AF; /* High contrast Royal Blue */
+  color: #FFFFFF;
+  border-color: #1D4ED8;
+  box-shadow: 0 8px 24px -4px rgba(30, 64, 175, 0.3), 0 2px 6px rgba(15, 23, 42, 0.06);
+}
+
+.outcome-card-item.is-selected .card-title-heading {
+  color: #FFFFFF;
+}
+
+.outcome-card-item.is-selected .card-desc-text {
+  color: #DBEAFE;
+}
+
+.outcome-card-item.is-selected .card-kpi-box {
+  background-color: rgba(30, 58, 138, 0.55);
+  border-color: rgba(96, 165, 250, 0.35);
+}
+
+.outcome-card-item.is-selected .card-kpi-label {
+  color: #93C5FD;
+}
+
+.outcome-card-item.is-selected .card-kpi-desc {
+  color: #FFFFFF;
+}
+
+.outcome-card-item.is-selected .card-action-text {
+  color: #93C5FD;
+}
+
+.outcome-card-item.is-selected .card-action-icon {
+  color: #93C5FD;
+}
+
+/* Dark executive panel */
+.vyntra-dark-panel {
+  background: #0B132B;
+  color: #FFFFFF !important;
+  border: 1px solid #1E293B;
+  border-radius: 18px;
+  box-shadow: 0 16px 36px -12px rgba(15, 23, 42, 0.3);
+  padding: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .vyntra-dark-panel {
+    padding: 2.5rem;
+  }
+}
+
+.vyntra-dark-panel * {
+  color: inherit;
+}
+
+/* Base button styles */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #2563EB;
+  color: #FFFFFF;
+  padding: 0.55rem 1.15rem;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  background-color: #1D4ED8;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #FFFFFF;
+  color: #1E293B;
+  padding: 0.55rem 1.15rem;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  border-radius: 8px;
+  border: 1px solid #CBD5E1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-secondary:hover {
+  background-color: #F1F5F9;
+  border-color: #94A3B8;
+  color: #0F172A;
+}
+
+/* VYNTRA primary navy button */
+.btn-vyntra-navy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #0F172A;
+  color: #FFFFFF;
+  padding: 0.65rem 1.4rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 10px;
+  border: 1px solid #1E293B;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+}
+
+.btn-vyntra-navy:hover {
+  background-color: #1E293B;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+}
+
+/* Royal blue emphasis button */
+.btn-vyntra-blue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #2563EB 0%, #4F46E5 100%);
+  color: #FFFFFF;
+  padding: 0.65rem 1.4rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+
+.btn-vyntra-blue:hover {
+  background: linear-gradient(135deg, #1D4ED8 0%, #4338CA 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+/* Clean secondary button */
+.btn-vyntra-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #FFFFFF;
+  color: #0F172A;
+  padding: 0.65rem 1.4rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 10px;
+  border: 1px solid #E2E8F0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-vyntra-secondary:hover {
+  background-color: #F8FAFC;
+  border-color: #CBD5E1;
+}
+
+/* Active navigation link styling */
+.nav-link-active {
+  color: #2563EB !important;
+  position: relative;
+}
+
+.nav-link-active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #2563EB, #4F46E5);
+  border-radius: 2px;
+}
+
+/* Subtle scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
